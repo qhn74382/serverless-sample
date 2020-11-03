@@ -77,6 +77,33 @@
 - `Items` - each table contains zero or more items. An `item` is a group of attributes that is uniquely identifiable among all of the other items
 - `Attributes` - each item is composed of one or more attributes. An `attribute` is a fundamental data element, something that does not need to be broken down any further
 
+###  DynamoDB - Primary Key, Partition Key, Sort Key
+- The primary key uniquely identifies each item in the table, so that no two items can have the same key
+- DynamoDB supports two types of primary keys:
+   - Partition key - is a simple primary key, composed of one attribute. Attributes in DynamoDB are similar in many ways to fields or columns in other database systems
+   - Partition key and Sort key - refered to as a composite primary key, this type of key is composed of two attributes: `partition key` and `sort key`
+
+### DynamoDB Supported Keys
+![DynamoDB Supported Keys](./images/dynamoDB-supported-keys.png)
+
+### DynamoDB - Provisioned and On-Demand Capacity
+`Provision Capacity Mode`
+- Need to specify the number of reads and writes per second that you expect your application require
+- Use auto scaling to automatically adjust your table's capacity based on the specified utilization rate
+- Might be best if you:
+   - Have predictable application traffic
+   - Run applications whose traffic is consistent or ramps gradually
+   - Can forecast capacity requirements to control costs
+`On-Demand Capacity Mode`
+- DynamoDB charges you for the data reads and writes your application performs on your tables
+- You do not need to specify how much read and write throughput
+- Might be best if you:
+   - Create new tables with unknown workloads
+   - Have unpredictable application traffic
+   - Prefer the ease of paying for only what you use
+
+### DynamoDB - Why Do We Need Auto Scaling?
+
 ### Understanding SQL, NoSQL and Its Differences
 - `DBMS` stands for Database Management System
 - Four Types of DBMS:
@@ -87,14 +114,14 @@
 - `Relational Database` is a collection of data items with pre-defined relationships between them. These items are organized as a set of tables with columns and rows. Tables are used to hold information about the objects to be represented in the database.
     - SQL (Structured Query Language or Sequel) is the standard language to query Relational DBs
     - MySQL, Orable, MS SQL Servers are some of the Relational DBs that uses SQL
-- SQL
-    - `SQL` is a query language that is designed to facilitate retrieving specific information from databases
+- `SQL`
+    - SQL is a query language that is designed to facilitate retrieving specific information from databases
     - Can create databases, tables, stored procedures, views
     - Can be used effectively to perform `insert`, `search`, `update`, `delete` the records
     - Can set permissions on tables, procedures, and views
     - Also helps in optimizing and maintenance of databases
 
-- NoSQL - Non-Relational
+- `NoSQL - Non-Relational`
     - are databases that store data in a format other than relational tables, such as key-value pairs or document storage
     - Examples are DynamoDB, MongoDB, and CouchDB from Apache
 
